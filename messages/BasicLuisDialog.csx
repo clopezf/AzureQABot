@@ -46,7 +46,7 @@ public class BasicLuisDialog : LuisDialog<object>
         string questionToAnswer3;
 
         using (var connection = new QC.SqlConnection(
-        "Server=tcp:santabot.database.windows.net,1433;Initial Catalog=santabot;Persist Security Info=False;User ID=santabot;Password=Admin123456789;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+        System.Configuration.ConfigurationSettings.AppSettings["ConectionString"]
                     ))
         {
             connection.Open();
@@ -84,9 +84,9 @@ public class BasicLuisDialog : LuisDialog<object>
         await context.PostAsync($"Good, you must know a good Elf always read about Christmas and know important facts. Ready, set, Go!!");
         await context.PostAsync(questionToUser);
         await context.PostAsync($"A. " + questionToAnswer);
-        await context.PostAsync($"A. " + questionToAnswer1);
-        await context.PostAsync($"A. " + questionToAnswer2);
-        await context.PostAsync($"A. " + questionToAnswer3);
+        await context.PostAsync($"B. " + questionToAnswer1);
+        await context.PostAsync($"C. " + questionToAnswer2);
+        await context.PostAsync($"D. " + questionToAnswer3);
         context.Wait(MessageReceived);
     }
 }
