@@ -17,7 +17,7 @@ public class BasicLuisDialog : LuisDialog<object>
     [LuisIntent("None")]
     public async Task NoneIntent(IDialogContext context, LuisResult result)
     {
-        await context.PostAsync($"You have reached the none intent. You said: {result.Query}"); //
+        await context.PostAsync($"You have reached me, the Azure QA bot. And you said this, you naughty peson: {result.Query}"); //
         context.Wait(MessageReceived);
     }
 
