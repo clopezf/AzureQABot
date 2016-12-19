@@ -29,7 +29,7 @@ public class BasicLuisDialog : LuisDialog<object>
     [LuisIntent("Greetings")]
     public async Task GreetingsIntent(IDialogContext context, LuisResult result)
     {
-        await context.PostAsync($"Welcome to Santazure's workshop, we are about to find out if you have been good or naughty, do you want to know now?"); //
+        await context.PostAsync($"Welcome to Azure Athlon Challenge"); //
         context.Wait(MessageReceived);
     }
 
@@ -46,7 +46,7 @@ public class BasicLuisDialog : LuisDialog<object>
         string questionToAnswer3;
 
         using (var connection = new QC.SqlConnection(
-        System.Configuration.ConfigurationSettings.AppSettings["ConectionString"]
+        System.Configuration.ConfigurationSettings.AppSettings["ConnectionString"]
                     ))
         {
             connection.Open();
