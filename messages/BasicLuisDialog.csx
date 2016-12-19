@@ -46,7 +46,7 @@ public class BasicLuisDialog : LuisDialog<object>
         string questionToAnswer3;
 
         using (var connection = new QC.SqlConnection(
-        System.Configuration.ConfigurationSettings.AppSettings["ConnectionString"]
+        System.Configuration.ConfigurationSettings.AppSettings["connectiondb"]
                     ))
         {
             connection.Open();
