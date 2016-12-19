@@ -1,3 +1,6 @@
-# Debugging a C# Azure Bot Service bot in Visual Studio 
+Sample bot to do Questions and Answers about Azure.
 
-To learn how to debug Azure Bot Service bots, please visit https://aka.ms/bf-docs-azure-debug
+Very much in development, so not worth cloning yet.
+
+
+Using Azure Bot Service (preview).
