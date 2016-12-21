@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-
 using Microsoft.Bot.Builder.Azure;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Luis;
@@ -16,11 +15,10 @@ public class BasicLuisDialog : LuisDialog<object>
     {
     }
 
-
     [LuisIntent("None")]
     public async Task NoneIntent(IDialogContext context, LuisResult result)
     {
-        await context.PostAsync($"You have reached the none intent. You said: {result.Query}"); //
+        await context.PostAsync($"You have reached the «none» intent. You said: {result.Query}"); //
         context.Wait(MessageReceived);
     }
 
@@ -45,9 +43,7 @@ public class BasicLuisDialog : LuisDialog<object>
         string questionToAnswer2;
         string questionToAnswer3;
 
-        using (var connection = new QC.SqlConnection(
-        System.Configuration.ConfigurationSettings.AppSettings["connectiondb"]
-                    ))
+        using (var connection = new QC.SqlConnection(System.Configuration.ConfigurationSettings.AppSettings["connectiondb"]))
         {
             connection.Open();
 
@@ -87,6 +83,13 @@ public class BasicLuisDialog : LuisDialog<object>
         await context.PostAsync($"B. " + questionToAnswer1);
         await context.PostAsync($"C. " + questionToAnswer2);
         await context.PostAsync($"D. " + questionToAnswer3);
+
+        context.ConversationData.SetValue("lastquestion", questionIdToUser);
+
+        string lastQ = string.Empty;
+        context.ConversationData.TryGetValue<string>("lastquestion", out lastQ);
+
+        await context.PostAsync($"Last question: " + lastQ);
         context.Wait(MessageReceived);
     }
 }
